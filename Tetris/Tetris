@@ -132,7 +132,6 @@ def main():
     offset = [GAME_WIDTH // 2 - len(tetromino[0]) // 2, 0]
     last_fall_time = pygame.time.get_ticks()
     game_over = False
-    paused = False
 
     while not game_over:
         screen.fill(BLACK)
