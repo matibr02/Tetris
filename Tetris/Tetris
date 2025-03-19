@@ -78,14 +78,6 @@ def clear_lines(board):
 def rotate(tetromino):
     return [list(reversed(col)) for col in zip(*tetromino)]
 
-# Pause Screen with Restart Button
-def pause_screen():
-    screen.fill(BLACK)
-    font = pygame.font.Font(None, SCREEN_WIDTH // 15)
-    text = font.render("Paused", True, WHITE)
-    text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 3))
-    screen.blit(text, text_rect)
-
     button_font = pygame.font.Font(None, SCREEN_WIDTH // 20)
     button_text = button_font.render("Restart", True, BLACK)
     button_rect = pygame.Rect(SCREEN_WIDTH // 3, SCREEN_HEIGHT // 2, SCREEN_WIDTH // 3, SCREEN_HEIGHT // 10)
@@ -167,9 +159,6 @@ def main():
                     rotated = rotate(tetromino)
                     if valid_position(board, rotated, offset):
                         tetromino = rotated
-                elif event.key == pygame.K_p:  # Pause game
-                    action = pause_screen()
-                    if action == "restart":
                         main()
                         return
                 elif event.key == pygame.K_ESCAPE:  # Quit game with ESC
